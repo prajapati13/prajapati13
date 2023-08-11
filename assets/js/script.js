@@ -33,6 +33,8 @@ const testimonialsModalFunc = function () {
   overlay.classList.toggle("active");
 }
 
+
+
 // add click event to all modal items
 for (let i = 0; i < testimonialsItem.length; i++) {
 
@@ -52,6 +54,37 @@ for (let i = 0; i < testimonialsItem.length; i++) {
 // add click event to modal close button
 modalCloseBtn.addEventListener("click", testimonialsModalFunc);
 overlay.addEventListener("click", testimonialsModalFunc);
+
+
+
+// porfolio variables
+const portfolioItem = document.querySelectorAll(".icon-view");
+const modalContainerPortfolio = document.querySelector("[data-modal-container-portfolio]");
+const modalCloseBtnPortfolio = document.querySelector("[data-modal-close-btn-portfolio]");
+const overlayPortfolio = document.querySelector("[data-overlay-portfolio]");
+const modalImgPortfolio = document.querySelector("[data-modal-img-Portfolio]");
+
+
+// Portfolio modal toggle function
+const portfolioModalFunc = function () {
+  modalContainerPortfolio.classList.toggle("active");
+  overlayPortfolio.classList.toggle("active");
+} 
+
+// add click event to all modal items
+for (let i = 0; i < portfolioItem.length; i++) {
+  portfolioItem[i].addEventListener("click", function (event) {
+    modalImgPortfolio.src = event.currentTarget.closest('.project-img').querySelector('img').src;
+    modalImgPortfolio.alt = event.currentTarget.closest('.project-img').querySelector('img').alt;
+    portfolioModalFunc();
+  });
+
+}
+// add click event to modal close button
+modalCloseBtnPortfolio.addEventListener("click", portfolioModalFunc);
+overlayPortfolio.addEventListener("click", portfolioModalFunc);
+
+
 
 
 
@@ -114,26 +147,23 @@ for (let i = 0; i < filterBtn.length; i++) {
 }
 
 
-
 // contact form variables
 const form = document.querySelector("[data-form]");
 const formInputs = document.querySelectorAll("[data-form-input]");
 const formBtn = document.querySelector("[data-form-btn]");
 
-// add event to all form input field
-for (let i = 0; i < formInputs.length; i++) {
-  formInputs[i].addEventListener("input", function () {
-
-    // check form validation
-    if (form.checkValidity()) {
-      formBtn.removeAttribute("disabled");
-    } else {
-      formBtn.setAttribute("disabled", "");
-    }
-
-  });
-}
-
+form.addEventListener("submit", (event) => {
+  console.log('hello');
+  setTimeout(function(){
+    form.querySelectorAll('.form-input').forEach(function(input) {
+      input.value = '';
+    });
+    document.querySelector('.message_success').classList.remove('hidden');
+  }, 200);
+  setTimeout(function(){
+    document.querySelector('.message_success').classList.add('hidden');
+  }, 5000);
+});
 
 
 // page navigation variables

@@ -68,6 +68,7 @@
   --light-gray: hsl(0, 0%, 84%);
   --light-gray-70: hsla(0, 0%, 84%, 0.7);
   --bittersweet-shimmer: hsl(0, 43%, 51%);
+  --success: #4CAF50;
 
   /**
    * typography
@@ -118,6 +119,10 @@
 /*-----------------------------------*\
   #RESET
 \*-----------------------------------*/
+
+.hidden {
+  display: none;
+}
 
 *, *::before, *::after {
   margin: 0;
@@ -342,16 +347,18 @@ main {
   font-weight: var(--fw-500);
   letter-spacing: -0.25px;
   margin-bottom: 10px;
+  text-transform: uppercase;
 }
 
 .info-content .title {
-  color: var(--white-1);
-  background: var(--onyx);
-  font-size: var(--fs-8);
+  color: var(--orange-yellow-crayola);
+  /* background: var(--onyx); */
+  font-size: var(--fs-6);
   font-weight: var(--fw-300);
   width: max-content;
-  padding: 3px 12px;
+  /* padding: 3px 12px; */
   border-radius: 8px;
+
 }
 
 .info_more-btn {
@@ -482,6 +489,7 @@ main {
   font-size: var(--fs-8);
   padding: 20px 7px;
   transition: color var(--transition-1);
+  text-transform: uppercase;
 }
 
 .navbar-link:hover,
@@ -763,10 +771,10 @@ main {
 
 
 /*-----------------------------------*\
-  #RESUME
+  #PROFILE
 \*-----------------------------------*/
 
-.article-title { margin-bottom: 30px; }
+.article-title { margin-bottom: 30px;text-transform: uppercase; }
 
 
 /**
@@ -831,6 +839,20 @@ main {
   line-height: 1.6;
 }
 
+.timeline-list .timeline-list {
+  margin-left: 60px;
+  margin-top: 15px;
+}
+@media (min-width: 580px) {
+  .timeline-list .timeline-list .timeline-item:not(:last-child)::before { 
+    left: -20px;
+    top: 0;
+    height: calc(100% + 22px);
+   }
+  .timeline-list .timeline-list .timeline-item::after {
+    left: -23px;
+   }
+}
 
 /**
  * skills 
@@ -959,7 +981,7 @@ main {
   position: relative;
   width: 100%;
   height: 200px;
-  border-radius: 16px;
+  /* border-radius: 16px; */
   overflow: hidden;
   margin-bottom: 15px;
 }
@@ -976,26 +998,32 @@ main {
   transition: var(--transition-1);
 }
 
-.project-item > a:hover .project-img::before { background: hsla(0, 0%, 0%, 0.5); }
+.project-item > .project-img:hover::before { background: hsla(0, 0%, 0%, 0.5); }
 
-.project-item-icon-box {
-  --scale: 0.8;
-
-  background: var(--jet);
-  color: var(--orange-yellow-crayola);
+.projects-icon {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(var(--scale));
-  font-size: 20px;
-  padding: 18px;
-  border-radius: 12px;
   opacity: 0;
   z-index: 1;
   transition: var(--transition-1);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  --scale: 0.8;
 }
 
-.project-item > a:hover .project-item-icon-box {
+.project-item-icon-box {
+  background: var(--jet);
+  color: var(--orange-yellow-crayola);
+  font-size: 20px;
+  padding: 18px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.project-item > .project-img:hover .projects-icon {
   --scale: 1;
   opacity: 1;
 }
@@ -1343,9 +1371,9 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .avatar-box img { width: 100%; }
 
-  .info-content .name { margin-bottom: 15px; }
+  .info-content .name { margin-bottom: 0px; }
 
-  .info-content .title { padding: 5px 18px; }
+  /* .info-content .title { padding: 5px 18px; } */
 
   .info_more-btn {
     top: -30px;
@@ -1465,7 +1493,7 @@ textarea.form-input::-webkit-resizer { display: none; }
     margin-bottom: 0;
   }
 
-  .modal-avatar-box img { width: 65px; }
+  /* .modal-avatar-box img { width: 65px; } */
 
   .modal-img-wrapper > img {
     display: block;
@@ -1508,7 +1536,7 @@ textarea.form-input::-webkit-resizer { display: none; }
    * #PORTFOLIO, BLOG
    */
 
-  .project-img, .blog-banner-box { border-radius: 16px; }
+  /* .project-img, .blog-banner-box { border-radius: 16px; } */
 
   .blog-posts-list { gap: 30px; }
 
@@ -1590,10 +1618,10 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .testimonials-modal {
     gap: 35px;
-    max-width: 680px;
+    max-width: 680px; 
   }
 
-  .modal-avatar-box img { width: 80px; }
+   .modal-avatar-box img { width: 80px; } 
 
 
 
@@ -1865,6 +1893,12 @@ textarea.form-input::-webkit-resizer { display: none; }
     --fs-7: 14px;
     font-weight: var(--fw-300);
   }
+  
+  .message_success {
+    color:var(--success);
+    font-size: 19px;
+    margin-bottom: 12px;
+  }
 
   .separator:last-of-type {
     margin: 15px 0;
@@ -1880,5 +1914,13 @@ textarea.form-input::-webkit-resizer { display: none; }
 	 */
 
   .timeline-text { max-width: 700px; }
+
+}
+
+
+/*------- Portfolio modal--------*/
+
+
+.portfolio-modal {
 
 }
