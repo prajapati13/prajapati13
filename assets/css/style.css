@@ -321,12 +321,12 @@ main {
 
 .sidebar {
   margin-bottom: 15px;
-  max-height: 112px;
+  /* max-height: 213px; */
   overflow: hidden;
   transition: var(--transition-2);
 }
 
-.sidebar.active { max-height: 405px; }
+.sidebar.active { max-height: 550px; }
 
 .sidebar-info {
   position: relative;
@@ -373,6 +373,7 @@ main {
   box-shadow: var(--shadow-2);
   transition: var(--transition-1);
   z-index: 1;
+  display: none;
 }
 
 .info_more-btn::before {
@@ -394,8 +395,8 @@ main {
 .info_more-btn span { display: none; }
 
 .sidebar-info_more {
-  opacity: 0;
-  visibility: hidden;
+  /* opacity: 0;
+  visibility: hidden; */
   transition: var(--transition-2);
 }
 
@@ -627,10 +628,9 @@ main {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  max-height: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
   overflow-y: auto;
   overscroll-behavior: contain;
   z-index: 20;
@@ -677,6 +677,7 @@ main {
   opacity: 0;
   transition: var(--transition-1);
   z-index: 2;
+  height: 100%;
 }
 
 .modal-container.active .testimonials-modal {
@@ -707,7 +708,7 @@ main {
 
 .modal-avatar-box {
   background: var(--bg-gradient-onyx);
-  width: max-content;
+  /* width: max-content; */
   border-radius: 14px;
   margin-bottom: 15px;
   box-shadow: var(--shadow-2);
@@ -980,7 +981,7 @@ main {
 .project-img {
   position: relative;
   width: 100%;
-  height: 200px;
+  max-height: 300px;
   /* border-radius: 16px; */
   overflow: hidden;
   margin-bottom: 15px;
@@ -1277,8 +1278,8 @@ textarea.form-input::-webkit-resizer { display: none; }
    * #PORTFOLIO, BLOG 
    */
 
-  .project-img,
-  .blog-banner-box { height: auto; }
+  /* .project-img,
+  .blog-banner-box { height: auto; } */
 
 }
 
@@ -1359,11 +1360,11 @@ textarea.form-input::-webkit-resizer { display: none; }
    */
 
   .sidebar {
-    max-height: 180px;
+    /* max-height: 180px; */
     margin-bottom: 30px;
   }
 
-  .sidebar.active { max-height: 584px; }
+  /* .sidebar.active { max-height: 584px; } */
 
   .sidebar-info { gap: 25px; }
 
@@ -1618,10 +1619,11 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .testimonials-modal {
     gap: 35px;
-    max-width: 680px; 
+    /* max-width: 680px;  */
+    max-width: 90%;
   }
 
-   .modal-avatar-box img { width: 80px; } 
+   /* .modal-avatar-box img { width: 80px; }  */
 
 
 
@@ -1920,7 +1922,14 @@ textarea.form-input::-webkit-resizer { display: none; }
 
 /*------- Portfolio modal--------*/
 
+.modal-avatar-box img { max-width: 100%; } 
 
-.portfolio-modal {
+body.popup-hidden {
+  overflow: hidden;
+}
 
+@media only screen and (max-width:1249px) {
+  .avatar-box img {
+     max-width: 150px; 
+  }
 }

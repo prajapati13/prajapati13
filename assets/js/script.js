@@ -69,14 +69,17 @@ const modalImgPortfolio = document.querySelector("[data-modal-img-Portfolio]");
 const portfolioModalFunc = function () {
   modalContainerPortfolio.classList.toggle("active");
   overlayPortfolio.classList.toggle("active");
+  document.querySelector("body").classList.toggle("popup-hidden");
 } 
 
 // add click event to all modal items
 for (let i = 0; i < portfolioItem.length; i++) {
   portfolioItem[i].addEventListener("click", function (event) {
-    modalImgPortfolio.src = event.currentTarget.closest('.project-img').querySelector('img').src;
+    modalImgPortfolio.src = event.currentTarget.closest('.project-img').querySelector('img').getAttribute('data-src');
     modalImgPortfolio.alt = event.currentTarget.closest('.project-img').querySelector('img').alt;
-    portfolioModalFunc();
+    setTimeout(function(){
+        portfolioModalFunc();
+    }, 50);
   });
 
 }
@@ -114,10 +117,10 @@ const filterItems = document.querySelectorAll("[data-filter-item]");
 const filterFunc = function (selectedValue) {
 
   for (let i = 0; i < filterItems.length; i++) {
-
+    let categoryName = filterItems[i].dataset.category;
     if (selectedValue === "all") {
       filterItems[i].classList.add("active");
-    } else if (selectedValue === filterItems[i].dataset.category) {
+    } else if (selectedValue == categoryName) {
       filterItems[i].classList.add("active");
     } else {
       filterItems[i].classList.remove("active");
